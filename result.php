@@ -17,24 +17,17 @@ if (isset($_POST['send']))
 <body>
   <?php include 'template/header.php';?>
   <div class="container">
+     <div class="container2">
     <div class="row">
       <div class="col-xs-3 text-center">
-        <h3>Tabel Adjacency</h3>
-        <table class="table table-bordered table-striped">
-          <thead>
-            <tr>
-              <th>#</th>
-              <?php
-              for($i = 1; $i <= $v; $i++) echo "<th>".$vertex[$i]."</th>";
-                ?>
-            </tr>
-          </thead>
+        
+       
+          
           <tbody>
             <?php
             for($i = 1; $i <= $v; $i++)
             {
-              echo "<tr>";
-              echo "<th>".$vertex[$i]."</th>";
+              
               for($j = 1; $j <= $v; $j++)
               {
                 $array[$i][$j] = 0;
@@ -42,29 +35,30 @@ if (isset($_POST['send']))
                   if($sedge[$k] == $i && $dedge[$k] == $j) $array[$i][$j] += 1;
                 for($k = 1; $k <= $e; $k++)
                   if($dedge[$k] == $i && $sedge[$k] == $j) $array[$i][$j] += 1;
-                echo "<th>".$array[$i][$j]."</th>";
+                
               }
-              echo "</tr>";
+             
             }
             ?>
           </tbody>
-        </table>
+     
       </div>
+    </div>
       <div class="col-xs-3">
-        <h3>Detail</h3>
+        <h3>Detalle</h3>
         <ul class="text-primary">
           <?php
           include 'template/function.php';
-          if(sederhana($array, $v)) echo "<li>Simple Graph</li>";
-          else echo "<li>Non-simple Graph</li>";
-          echo "<li>Undirected Graph</li>";
-          if(sederhana($array, $v) && complete($array, $v)) echo "<li>Complete Graph</li>";
-          if(sederhana($array, $v) && cycle($array, $v, $e)) echo "<li>Cycle Graph</li>";
-          if(sederhana($array, $v) && wheel($array, $v, $e)) echo "<li>Wheel Graph</li>";
+          if(sederhana($array, $v)) echo "<li>Grafo Simple</li>";
+          else echo "<li>Grafo Sin Kruskal</li>";
+          echo "<li>Grafo No Dirigido</li>";
+          if(sederhana($array, $v) && complete($array, $v)) echo "<li>Grafo Completo</li>";
+          if(sederhana($array, $v) && cycle($array, $v, $e)) echo "<li>Grafo Cíclico</li>";
+          if(sederhana($array, $v) && wheel($array, $v, $e)) echo "<li>Circuito</li>";
           ?>
         </ul>
-        <h3>Program MST-Kruskal's</h3>
-        <p class="text-primary">Untuk melihat bentuk jaringan listrik setelah menjalankan algoritma kruskal's, silahkan klik tautan di bawah:</p>
+        <h3>Programa Kruskal</h3>
+        <p class="text-primary">Para ver la forma de la red eléctrica después de ejecutar el Algoritmo de Kruskal haga click en Next</p>
         <form role="form" action="result2.php" method="post">
           <?php
           for($i = 1; $i <= $v; $i++)
@@ -84,10 +78,10 @@ if (isset($_POST['send']))
         </form>
       </div>
       <div class="col-xs-6 text-center">
-        <h3>Bentuk Jaringan Listrik Awal</h3>
+        <h3>Red eléctrica sin Kruskal</h3>
         <div id="mynetwork" style="width: 600px; height: 400px; border: 1px solid lightgray;"></div>
         <script type="text/javascript">
-        // create an array with nodes
+        // creando array con nodos
         var nodes = new vis.DataSet([
           // {id: 1, label: 'Node 1'},
           // {id: 2, label: 'Node 2'},
@@ -108,7 +102,7 @@ if (isset($_POST['send']))
           // echo "', group: 'tower'}]);";
           ?>
 
-        // create an array with edges
+        // crear array con vertices
         var edges = new vis.DataSet([
           // {from: 1, to: 3},
           // {from: 1, to: 2},
@@ -118,7 +112,7 @@ if (isset($_POST['send']))
           for($i = 1; $i < $e; $i++) echo "{from: ".$sedge[$i].", to: ".$dedge[$i].", label: ".$weight[$i].", font: {align: 'middle'}},";
             echo "{from: ".$sedge[$e].", to: ".$dedge[$e].", label: ".$weight[$e].", font: {align: 'middle'}}]);";
           ?>
-        // create a network
+        // crear una red
         var container = document.getElementById('mynetwork');
         var data = {
           nodes: nodes,

@@ -89,11 +89,14 @@ if (isset($_POST['send']))
         <?php include 'template/header.php';?>
         <div class="container">
             <div class="row">
+                <center><h3>Red eléctrica con kruskal</h3></center>
                 <div class="col-xs-3 text-center">
-                    <h3 class="text-center">Keterangan</h3>
-                    <p class="text-justify">Untuk melihat implementasi <i>kruskal's algorithm step by step</i>, silahkan klik tautan di bawah:</p>
+                    <h3 class="text-center">Descripción</h3>
+                    <p class="text-justify">Para ver la implementación <i>del algoritmo de Kruskal paso a paso</i>, de click en Next</p>
+
                     <div id="demo"><button type="button" class="btn btn-info">Next</button></div>
                     <?php
+
                     for($i = 1; $i <= $edge; $i++)
                     {
                         echo '<input id="edge-id '.$i.'" type="hidden" value="'.$i.'">';
@@ -113,9 +116,10 @@ if (isset($_POST['send']))
                                 addEdge(x);
                                 x++;
                             }
-                            else document.getElementById("demo").innerHTML = '<div class="alert alert-info"><b>Thx for using this app</b></div>';
+                            else document.getElementById("demo").innerHTML = '<div class="alert alert-info"><b>Conexión Kruskal terminada</b></div>';
                         }
                     </script>
+
                     <pre id="nodes" hidden></pre>
                     <pre id="edges" hidden></pre>
                 </div>
@@ -123,7 +127,7 @@ if (isset($_POST['send']))
                     <div id="network" style="width: 600px; height: 400px; border: 1px solid lightgray;"></div>
                 </div>
                 <div class="col-xs-2 col-xs-offset-2">
-                    <h3 class="text-center">Detail Edge</h3>
+                    <h3 class="text-center">Conexiones con Kruskal</h3>
                     <ul class="text-primary">
                     <?php
                     for($i = 1; $i <= $edge; $i++) $terpilih[$i] = 0;

@@ -22,10 +22,14 @@ if(isset($_POST['send']))
 </head>
 <body>
 	<?php include 'template/header.php';?>
-	<div class="container">
-		<div class="row">
+
+	<div class="container1">
+			<div class="barra">
+				<div class="row">
 			<div class="col-xs-4 col-xs-offset-2 text-center">
-				<h3>Tabel Adjacency</h3>
+				<div class="adyacencia">
+				<center><h3><b>Tabla de Adyacencia</b></h3></center>
+			</div>
 				<table class="table table-bordered table-striped">
 					<thead>
 						<tr>
@@ -57,12 +61,14 @@ if(isset($_POST['send']))
 					</tbody>
 				</table>
 			</div>
+		</div>
+		</div>
 			<div class="col-xs-4 text-center">
 				<?php
 				if($e)
 				{
 					echo '<div class="form-top">';
-					echo '<h3 class="text-center">Masukkan spesifikasi tiap <b>sambungan</b></h3>';
+					echo '<h3 class="text-center">Ingrese cada dato de <b>Conexión</b></h3>';
 					echo '</div>';
 					echo '<div class="form-bottom">';
 					if($i==$e) echo '<form role="form" action="result.php" method="post">';
@@ -74,9 +80,9 @@ if(isset($_POST['send']))
 						echo '<input type="hidden" name="dedge['.$j.']" value="'.$dedge[$j].'">';
 						echo '<input type="hidden" name="weight['.$j.']" value="'.$weight[$j].'">';
 					}
-					echo '<label for="sedge['.$i.']">Sambungan ke - ' . $i . '</label>';
+					echo '<label for="sedge['.$i.']">Conexión: ' . $i . '</label>';
 					echo '<select class="form-control" name="sedge['.$i.']">';
-					echo '<option value="" disabled selected="selected">Source</option>';
+					echo '<option value="" disabled selected="selected">Origen: </option>';
 					for($j = 1; $j <= $v; $j++)
 					{
 						echo '<option value="'.$j.'">'.$vertex[$j].'</option>';
@@ -84,9 +90,9 @@ if(isset($_POST['send']))
 					echo '</select>';
 					echo '</div>';
 					echo '<div class="form-group">';
-					echo '<label class="sr-only" for="dedge['.$i.']">Sambungan ke - ' . $i . '</label>';
+					echo '<label class="sr-only" for="dedge['.$i.']">Conexión: ' . $i . '</label>';
 					echo '<select class="form-control" name="dedge['.$i.']">';
-					echo '<option value="" disabled selected="selected">Destination</option>';
+					echo '<option value="" disabled selected="selected">Destino: </option>';
 					for($j = 1; $j <= $v; $j++)
 					{
 						echo '<option value="'.$j.'">'.$vertex[$j].'</option>';
@@ -94,8 +100,8 @@ if(isset($_POST['send']))
 					echo '</select>';
 					echo '</div>';
 					echo '<div class="form-group">';
-					echo '<label class="sr-only" for="weight['.$i.']">Sambungan ke - ' . $i . '</label>';
-					echo '<input type="number" name="weight['.$i.']" placeholder="weight" class="form-control">';
+					echo '<label class="sr-only" for="weight['.$i.']">Conexión: ' . $i . '</label>';
+					echo '<input type="number" name="weight['.$i.']" placeholder="Peso" class="form-control">';
 					echo '</div>';
 					for($j = 1; $j <= $v; $j++)
 					{
@@ -105,13 +111,12 @@ if(isset($_POST['send']))
 					echo '<input type="hidden" name="i" value="'.$i.'">';
 					echo '<input type="hidden" name="v" value="'.$v.'">';
 					echo '<input type="hidden" name="e" value="'.$e.'">';
-					echo '<button type="submit" name="send" class="btn btn-primary">Result</button><br><br>';
+					echo '<button type="submit" name="send" class="btn btn-primary">Next</button><br><br>';
 					echo '</form>';
 					echo '</div>';
 				}
 				?>
 			</div>
 		</div>
-	</div>
-</div>
+
 </body>

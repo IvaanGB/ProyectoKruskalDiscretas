@@ -20,14 +20,14 @@ if (isset($_POST['send']))
                 if($v)
                 {
                     echo '<div class="form-top">';
-                    echo '<h3 class="text-center">Masukkan nama tiap <b>tower listrik</b></h3>';
+                    echo '<h3 class="text-center">Ingrese cada nombre de <b>Torre Eléctrica</b></h3>';
                     echo '</div>';
                     echo '<div class="form-bottom">';
                     echo '<form role="form" action="edge.php" method="post">';
                     for($i = 1; $i <= $v; $i++)
                     {
                         echo '<div class="form-group">';
-                        echo '<label for="vertex['.$i.']">Nama tower ke - ' . $i . '</label>';
+                        echo '<label for="vertex['.$i.']">Nombre de Torre: ' . $i . '</label>';
                         echo '<input type="text" name="vertex['.$i.']" placeholder="-" class="form-control">';
                         echo '</div>';
                     }

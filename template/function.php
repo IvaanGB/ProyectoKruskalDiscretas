@@ -1,18 +1,18 @@
 <?php
-	function sederhana($a, $v) //tidak mengandung sisi ganda atau gelang
+	function sederhana($a, $v) 
 	{
 		$x = true;
 		for($i = 1; $i <= $v; $i++)
 		{
 			for($j = 1; $j <= $v; $j++)
 			{
-				if($i == $j  && $a[$i][$j] > 0) $x = false; //jika ada edge gelang
-				if($a[$i][$j] > 1) $x = false; //jika ada edge ganda
+				if($i == $j  && $a[$i][$j] > 0) $x = false;
+				if($a[$i][$j] > 1) $x = false;
 			}
 		}
 		return $x;
 	}
-	function complete($a, $v) //setiap pasang vertices selalu memiliki 1-buah edge
+	function complete($a, $v)
 	{
 		$x = true;
 		for($i = 1; $i <= $v; $i++)
